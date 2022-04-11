@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'python_cvicebnice.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pythoncvicebnice$default',
-        'USER':'pythoncvicebnice',
+        'NAME': 'pythoncvicebnice',
+        'USER':'root',
         'PASSWORD':'xiaomi4x',
-        'HOST':'pythoncvicebnice.mysql.eu.pythonanywhere-services.com',
+        'HOST':'localhost',
         'PORT':'3306',
     }
     #'default': {

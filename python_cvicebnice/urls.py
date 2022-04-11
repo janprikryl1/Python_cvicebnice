@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
@@ -25,8 +25,8 @@ urlpatterns = [
     path('', include("main.url")),  # Odkaz na hlavní aplikaci
 
     # Odkaz na soubory
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    url(r'^favicon\.ico$',RedirectView.as_view(url='/media/icon/icon.svg')),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^favicon\.ico$',RedirectView.as_view(url='/media/icon/icon.svg')),
 
 ]
 handler404 = 'main.views.handler404'
