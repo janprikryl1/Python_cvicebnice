@@ -1,0 +1,47 @@
+<!-- cookie warning toast -->
+<div class="fixed-bottom p-4" id="cookie_div">
+    <div data-bs-autohide="false" class="toast bg-dark text-white mw-100" role="alert" data-autohide="false" id="cookie_toast">
+        <div class="toast-body p-4 d-flex flex-column">
+            <h4>Používáme cookies</h4>
+            <p>Pouíváním této stránky souhlasíte s ukládáním souborů cookies.</p>
+            <div class="ml-auto">
+                <button type="button" class="btn btn-light" id="btnAccept">Beru na vědomí</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var cookie_toast = new bootstrap.Toast($('#cookie_toast'));
+
+    function setCookie(name,value,days) {
+    var expires = "";
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function cookieConsent() {
+    if (!getCookie('allowCookies')) {
+        cookie_toast.show();
+    } else {
+        $('#cookie_div').remove();
+    }
+}
+$('#btnAccept').click(()=>{
+    setCookie('allowCookies',true, 1000)
+    cookie_toast.hide();
+
+})
+// load
+cookieConsent()
+</script>

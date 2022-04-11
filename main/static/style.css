@@ -1,0 +1,144 @@
+/* GLOBAL STYLES */
+
+@media (prefers-color-scheme: light) { /*Light mode*/
+    body {
+        background-color: white;
+    }
+    p{
+      color:black;
+    }
+}
+@media (prefers-color-scheme: dark) { /* Dark mode */
+    a, H1, H2, H3, H4, p, li{
+        color: white;
+    }
+    #id_title, #id_file, label{
+        color: black;
+    }
+    body {
+        background-color: black;
+    }
+    .featurette-divider {
+        color: white;
+    }
+}
+
+body {
+  padding-bottom: 3rem;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+/* rtl:end:ignore */
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  /* rtl:remove */
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+.modal-backdrop {
+  background-color: transparent !important;
+}
+
+@media screen and (max-width: 1032px) {
+    #icon    {
+    visibility: hidden;
+    display: none;
+  }
+    #icons{
+        margin: -155px;
+    }
+}
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+.rounded-4 { border-radius: .5rem; }
+.rounded-5 { border-radius: 1rem; }
+
+.text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+.text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+.text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+.no_underline{
+    text-decoration: none;
+}

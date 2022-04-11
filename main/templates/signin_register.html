@@ -1,0 +1,185 @@
+<script>
+  $(document).ready(function (event) {
+      $('#register').on('submit', function (event) {
+      event.preventDefault();
+      $.ajax({
+       type:'POST',
+       url:'{% url 'register' %}',
+       data:{
+           'name':$("#reg_username").val(),
+           'surname':$("#reg_surname").val(),
+           'email': $('#reg_email').val(),
+           'password': $('#reg_password').val(),
+           'type':$('#type').val(),
+           'csrfmiddlewaretoken':'{{ csrf_token }}'
+       },
+       success: function (data) {
+              if (data.status == "email")
+           {
+               $('#message_title').text("Chyba");
+               $('#message_text').text("E-mail je již používan, zkontrolujte, jestli už nemáte založený profil.");
+               new bootstrap.Toast($('#info_toast')).show();
+               $('#reg_email').css("background", "red");
+               if ($(window).height() < 724) {
+                 alert("E-mail je již používan, zkontrolujte, jestli už nemáte založený profil.");
+               }
+           }
+           else {
+                $('#message_title').text("Gratuluji");
+                $('#message_text').text("Účet vytvořen, můžete se přihlásit.");
+                new bootstrap.Toast($('#info_toast')).show();
+               $("#reg_username").val("");
+               $('#reg_email').val("");
+               $('#reg_password').val("");
+               $("#reg_surname").val("");
+               $('#reg_email').css("background", "white");
+               if ($(window).height() < 724) {
+                 alert("Účet vytvořen, můžete se přihlásit");
+               }
+           }
+       },
+       error: function (edata) {
+           $('#message_title').text("Chyba");
+           $('#message_text').text("Omlouváme se, zkontrolujte internetové připojení");
+           new bootstrap.Toast($('#info_toast')).show();
+           if ($(window).height() < 724) {
+                 alert("Omlouváme se, zkontrolujte internetové připojení.");
+               }
+       }
+   })
+});
+$('#sign_in').on('submit', function (event) {
+          event.preventDefault();
+          $.ajax({
+           type:'POST',
+           url:'{% url 'sign_in' %}',
+           data:{
+               'email':$("#email").val(),
+               'password': $('#password').val(),
+               'csrfmiddlewaretoken':'{{ csrf_token }}'
+           },
+           success: function (data) {
+               if (data.status == "ok"){
+                   location.reload();
+               }
+               else{
+                    $('#message_title').text("Chyba");
+                    $('#message_text').text("Špatný email, nebo heslo.\nZkuste to znovu.");
+                    new bootstrap.Toast($('#info_toast')).show();
+                    if ($(window).height() < 724) {
+                      alert("Špatný email, nebo heslo.\nZkuste to znovu.");
+                    }
+               }
+           },
+           error: function (edata) {
+               $('#message_title').text("Chyba");
+               $('#message_text').text("Omlouváme se, zkontrolujte internetové připojení");
+               new bootstrap.Toast($('#info_toast')).show();
+               if ($(window).height() < 724) {
+                 alert("Omlouváme se, zkontrolujte internetové připojení");
+               }
+           }
+       })
+   });
+});
+function forgotten_password() {
+  if ($("#email").val() == "") {
+      $('#message_title').text("Chyba");
+      $('#message_text').text("Zadejte email k obnovení hesla.");
+      new bootstrap.Toast($('#info_toast')).show();
+      if ($(window).height() < 724) {
+          alert("Zadejte email k obnovení hesla.");
+      }
+      $("#email").css('background', 'red');
+  }
+  else{
+
+      $.ajax({
+               type:'POST',
+               url:'{% url 'send_password_recover' %}',
+               data:{
+                   'email':$("#email").val(),
+                   'csrfmiddlewaretoken':'{{ csrf_token }}'
+               },
+               success: function (data) {
+                   if (data.status == "sent"){
+                       $('#message_title').text("Obnovení hesla");
+                        $('#message_text').text("Na email vám bylo zasláno obnovení hesla.");
+                        new bootstrap.Toast($('#info_toast')).show();
+                        if ($(window).height() < 724) {
+                          alert("Na email vám bylo zasláno obnovení hesla.");
+                        }
+                   }
+                   else if (data.status == "email_not_found"){
+                        $('#message_title').text("Chyba");
+                        $('#message_text').text("Email nenalezen, zkuste jej zadat znovu.");
+                        new bootstrap.Toast($('#info_toast')).show();
+                        if ($(window).height() < 724) {
+                          alert("Email nenalezen, zkuste jej zadat znovu.");
+                        }
+                   }
+               },
+               error: function (edata) {
+                   $('#message_title').text("Chyba");
+                   $('#message_text').text("Omlouváme se, zkontrolujte internetové připojení");
+                   new bootstrap.Toast($('#info_toast')).show();
+                   if ($(window).height() < 724) {
+                     alert("Omlouváme se, zkontrolujte internetové připojení");
+                   }
+               }
+           })
+  }
+}
+</script>
+<div class="modal fade" id="sign_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" style="color: black">Přihlášení</h5>
+    </div>
+    <div class="modal-body">
+          <H2 style="color: black;">Registrujte se, nebo se přihlaste jako žák nebo učitel.</H2>
+        <form id="register">
+            <input type="text" class="form-control" placeholder="Jméno" id="reg_username" required/>
+            <input type="text" class="form-control" placeholder="Příjmení" id="reg_surname" required/>
+            <input type="email" class="form-control" placeholder="E-mail" id="reg_email" required/>
+            <input type="password" class="form-control" placeholder="Heslo" id="reg_password" required/>
+             <select class="form-select" id="type">
+                  <option selected value="student">Jsem student</option>
+                  <option value="teacher">Jsem učitel</option>
+                </select>
+            <br>
+            <button class="btn btn-secondary">Registrujte se</button>
+        </form>
+        <br>
+        <p style="text-align: center; color: black">Nebo</p>
+        <br>
+        <form id="sign_in">
+            <input type="email" class="form-control" placeholder="E-mail" id="email" required/>
+            <input type="password" class="form-control" placeholder="Heslo" id="password" required/>
+            <br>
+            <button class="btn btn-success">Přihlásit se</button>
+        </form>
+        <br>
+        <button onclick="forgotten_password();" class="btn btn-outline-secondary">Zapomenuté heslo</button>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  var Log_in_Modal = new bootstrap.Modal(document.getElementById('sign_modal'));
+</script>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+<div id="info_toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast-header">
+      <img src="media/icon/icon.svg" class="rounded me-2" width="20">
+<strong class="me-auto" id="message_title"></strong>
+<small>Teď</small>
+<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Zavřít"></button>
+</div>
+<div class="toast-body" id="message_text">
+
+</div>
+</div>
+</div>

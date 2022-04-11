@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Naučte se programovat"/>
+      <meta name="keywords" content="programování, python, programovací jazyk python, naučte se programovat">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nauč se Python!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+  </head>
+  <body>
+        <header>
+    <div class="px-1 py-2 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="{% url 'index' %}" class="align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" id="icon">
+              <img src="/media/icon/icon.svg" alt="Icon" width="40" height="32">
+          </a>
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small" id="icons">
+            <li>
+              <a href="{% url 'index' %}" class="nav-link text-secondary">
+                <svg viewBox="0 1 511 511.999" class="bi d-block mx-auto mb-1" width="24" height="24">
+                    <path
+                         d="m498.699219 222.695312c-.015625-.011718-.027344-.027343-.039063-.039062l-208.855468-208.847656c-8.902344-8.90625-20.738282-13.808594-33.328126-13.808594-12.589843 0-24.425781 4.902344-33.332031 13.808594l-208.746093 208.742187c-.070313.070313-.144532.144531-.210938.214844-18.28125 18.386719-18.25 48.21875.089844 66.558594 8.378906 8.382812 19.441406 13.234375 31.273437 13.746093.484375.046876.96875.070313 1.457031.070313h8.320313v153.695313c0 30.417968 24.75 55.164062 55.167969 55.164062h81.710937c8.285157 0 15-6.71875 15-15v-120.5c0-13.878906 11.292969-25.167969 25.171875-25.167969h48.195313c13.878906 0 25.167969 11.289063 25.167969 25.167969v120.5c0 8.28125 6.714843 15 15 15h81.710937c30.421875 0 55.167969-24.746094 55.167969-55.164062v-153.695313h7.71875c12.585937 0 24.421875-4.902344 33.332031-13.8125 18.359375-18.367187 18.367187-48.253906.027344-66.632813zm-21.242188 45.421876c-3.238281 3.238281-7.542969 5.023437-12.117187 5.023437h-22.71875c-8.285156 0-15 6.714844-15 15v168.695313c0 13.875-11.289063 25.164062-25.167969 25.164062h-66.710937v-105.5c0-30.417969-24.746094-55.167969-55.167969-55.167969h-48.195313c-30.421875 0-55.171875 24.75-55.171875 55.167969v105.5h-66.710937c-13.875 0-25.167969-11.289062-25.167969-25.164062v-168.695313c0-8.285156-6.714844-15-15-15h-22.328125c-.234375-.015625-.464844-.027344-.703125-.03125-4.46875-.078125-8.660156-1.851563-11.800781-4.996094-6.679688-6.679687-6.679688-17.550781 0-24.234375.003906 0 .003906-.003906.007812-.007812l.011719-.011719 208.847656-208.839844c3.234375-3.238281 7.535157-5.019531 12.113281-5.019531 4.574219 0 8.875 1.78125 12.113282 5.019531l208.800781 208.796875c.03125.03125.066406.0625.097656.09375 6.644531 6.691406 6.632813 17.539063-.03125 24.207032zm0 0"
+                         id="path2"/>
+                </svg>
+                Přehled
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'courses_list' %}" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24" viewBox="0 0 512 512">
+                <g><g><path d="M498.791,161.127c-17.545-17.546-46.094-17.545-63.645,0.004c-5.398,5.403-39.863,39.896-45.128,45.166V87.426
+                            c0-12.02-4.681-23.32-13.181-31.819L334.412,13.18C325.913,4.68,314.612,0,302.592,0H45.018c-24.813,0-45,20.187-45,45v422
+                            c0,24.813,20.187,45,45,45h300c24.813,0,45-20.187,45-45V333.631L498.79,224.767C516.377,207.181,516.381,178.715,498.791,161.127
+                            z M300.019,30c2.834,0,8.295-0.491,13.18,4.393l42.426,42.427c4.76,4.761,4.394,9.978,4.394,13.18h-60V30z M360.018,467
+                            c0,8.271-6.728,15-15,15h-300c-8.271,0-15-6.729-15-15V45c0-8.271,6.729-15,15-15h225v75c0,8.284,6.716,15,15,15h75v116.323
+                            c0,0-44.254,44.292-44.256,44.293l-21.203,21.204c-1.646,1.646-2.888,3.654-3.624,5.863l-21.214,63.64
+                            c-1.797,5.39-0.394,11.333,3.624,15.35c4.023,4.023,9.968,5.419,15.35,3.624l63.64-21.213c2.209-0.736,4.217-1.977,5.863-3.624
+                            l1.82-1.82V467z M326.378,312.427l21.213,21.213l-8.103,8.103l-31.819,10.606l10.606-31.82L326.378,312.427z M368.8,312.422
+                            l-21.213-21.213c11.296-11.305,61.465-61.517,72.105-72.166l21.213,21.213L368.8,312.422z M477.573,203.558l-15.463,15.476
+                            l-21.213-21.213l15.468-15.481c5.852-5.849,15.366-5.848,21.214,0C483.426,188.19,483.457,197.673,477.573,203.558z"/></g></g>
+                <g><g><path d="M285.018,150h-210c-8.284,0-15,6.716-15,15s6.716,15,15,15h210c8.284,0,15-6.716,15-15S293.302,150,285.018,150z"/></g></g>
+                <g><g><path d="M225.018,210h-150c-8.284,0-15,6.716-15,15s6.716,15,15,15h150c8.284,0,15-6.716,15-15S233.302,210,225.018,210z"/></g></g>
+                <g><g><path d="M225.018,270h-150c-8.284,0-15,6.716-15,15s6.716,15,15,15h150c8.284,0,15-6.716,15-15S233.302,270,225.018,270z"/></g></g><g><g>
+                <path d="M225.018,330h-150c-8.284,0-15,6.716-15,15s6.716,15,15,15h150c8.284,0,15-6.716,15-15S233.302,330,225.018,330z"/>	</g>
+                </g><g><g><path d="M285.018,422h-90c-8.284,0-15,6.716-15,15s6.716,15,15,15h90c8.284,0,15-6.716,15-15S293.302,422,285.018,422z"/></g>
+                </g></svg>
+                Lekce
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'contact' %}" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" height="24" viewBox="0 0 511.945 511.945" width="24">
+                    <path
+                         id="XMLID_89_"
+                         d="m 500.69828,74.383183 c 0,0 -17.91798,-18.647302 -28.66498,-25.434278 -2.71886,-1.717018 -5.73879,-3.023829 -8.85049,-3.734439 -6.92699,-1.581893 -3.66405,-1.040927 -21.25902,-1.040927 H 389.9111 l -122.38736,8.25e-4 h -52.15789 c -17.59496,0 -16.09038,-0.837007 -23.65915,1.505721 -5.74275,1.777533 -10.86612,5.444645 -15.60089,9.242779 -6.91306,5.545521 -18.29682,19.454528 -18.29682,19.454528 C 150.043,82.39422 145.7655,93.055026 145.7655,104.39637 v 191.03177 c 0,11.43197 4.40674,21.8143 11.54811,29.45292 0.15395,0.19035 0.31432,0.37737 0.48741,0.55701 0.17231,0.17793 0.3526,0.34191 0.53609,0.50008 7.39584,7.37746 17.44977,11.93049 28.52002,11.93049 h 106.49042 c 4.40591,0 7.9774,-3.68955 7.9774,-8.23929 0,-4.54972 -3.57149,-8.23928 -7.9774,-8.23928 H 186.85591 c -4.0262,0 -7.83063,-0.98788 -11.20827,-2.73378 l 94.02891,-97.11553 30.61251,31.59846 c 7.76043,8.01106 18.07521,12.42152 29.04654,12.42152 h 0.0123 c 10.97613,-0.002 21.29331,-4.42119 29.05213,-12.43966 l 30.48487,-31.50533 93.95628,97.04054 c -3.37684,1.74506 -7.18205,2.73378 -11.20823,2.73378 H 365.1433 c -4.40593,0 -7.97741,3.68956 -7.97741,8.23928 0,4.54974 3.57148,8.23929 7.97741,8.23929 h 106.4912 c 11.06865,0 21.12257,-4.55221 28.51843,-11.92884 0.18428,-0.15901 0.36536,-0.3238 0.53768,-0.50173 0.1739,-0.17964 0.33346,-0.36666 0.48821,-0.55782 7.14057,-7.63862 11.5473,-18.02096 11.5473,-29.45211 V 104.38403 c -8e-4,-11.330661 -4.27191,-21.984875 -12.02832,-30.000847 z m -11.28486,11.648691 c 1.38327,1.429512 2.5791,2.999901 3.58825,4.67413 l 5.73399,-5.754917 C 479.03621,74.301719 467.58235,63.473342 489.41342,86.031874 Z M 367.35338,44.17429 h -77.26037 z m -199.6212,38.145783 8.074,-8.923343 -14.70087,14.315954 4.3887,2.995788 c -0.94099,-3.067796 0.85567,-6.961344 2.23817,-8.388399 z m -3.36617,224.684257 c -1.68963,-3.48771 -2.64611,-7.41701 -2.64611,-11.57538 V 110.10869 l 96.67183,99.7834 z M 458.47943,126.38292 347.11644,241.47323 c -4.74657,4.90486 -11.05749,7.60651 -17.77207,7.60898 h -0.007 c -6.7114,0 -13.02151,-2.69836 -17.76885,-7.59909 L 200.01111,126.33592 165.49367,90.708472 c 0,0 13.01016,-21.068012 23.2668,-26.592204 7.92574,-4.26877 17.80793,-3.464168 26.60541,-3.464168 h 226.55873 c 8.79749,0 10.48088,0.639594 15.5048,2.069791 3.31047,0.942415 6.52476,2.378277 9.45054,4.234972 9.81803,6.230395 26.52964,22.142137 26.60544,22.79714 M 496.771,295.42895 c 0,4.15837 -0.95647,8.08767 -2.64608,11.57538 L 400.16543,209.96047 496.771,110.12268 Z"
+                         style="stroke-width:0.810727"
+                          />
+                      <path
+                         id="XMLID_135_"
+                         d="m 327.62697,318.91632 c -2.81102,0 -5.56861,1.14365 -7.55662,3.13167 -1.98803,1.98803 -3.13167,4.7456 -3.13167,7.55663 0,2.81103 1.14364,5.56861 3.13167,7.55662 1.98801,1.99872 4.7456,3.13168 7.55662,3.13168 2.81102,0 5.56862,-1.13296 7.55663,-3.13168 1.98803,-1.98801 3.13167,-4.74559 3.13167,-7.55662 0,-2.81103 -1.14364,-5.5686 -3.13167,-7.55663 -1.98801,-1.98693 -4.74561,-3.13167 -7.55663,-3.13167 z"
+                         style="stroke-width:1.06883" />
+                      <g
+                         id="g8"
+                         transform="matrix(0.67720371,-0.65192457,0.67504743,0.65400699,191.69204,209.56351)">
+                        <path
+                           d="M 180.948,27.722 C 163.07,9.844 139.299,-0.001 114.017,0 c -4.143,0 -7.5,3.358 -7.5,7.5 0,4.142 3.358,7.5 7.5,7.5 21.276,-10e-4 41.279,8.284 56.324,23.329 15.046,15.045 23.331,35.049 23.33,56.326 0,4.142 3.357,7.5 7.5,7.5 4.142,0 7.5,-3.358 7.5,-7.499 0.001,-25.285 -9.844,-49.056 -27.723,-66.934 z"
+                           id="path2" />
+                        <path
+                           d="m 150.096,94.656 c 0,4.142 3.358,7.5 7.501,7.499 4.142,0 7.499,-3.358 7.499,-7.5 -0.002,-28.16 -22.916,-51.073 -51.078,-51.077 -0.001,0 0,0 -0.001,0 -4.142,0 -7.499,3.357 -7.5,7.499 0,4.142 3.357,7.5 7.499,7.501 19.893,0.003 36.078,16.187 36.08,36.078 z"
+                           id="path4" />
+                      </g>
+                      <g
+                         id="g8-7"
+                         transform="matrix(1.640563,0,0,1.4604213,-1.65127,177.46036)">
+                        <path
+                           d="m 133.5,132.896 c -11.432,-0.592 -17.256,7.91 -20.049,11.994 -2.339,3.419 -1.463,8.086 1.956,10.425 3.419,2.339 8.086,1.463 10.425,-1.956 3.3,-4.825 4.795,-5.584 6.823,-5.488 6.491,0.763 32.056,19.497 34.616,25.355 0.642,1.725 0.618,3.416 -0.071,5.473 -2.684,7.966 -7.127,13.564 -12.851,16.188 -5.438,2.493 -12.105,2.267 -19.276,-0.651 C 108.296,183.322 84.902,168.091 65.542,148.965 65.534,148.957 65.526,148.95 65.519,148.942 46.433,129.601 31.23,106.237 20.334,79.501 17.415,72.324 17.189,65.656 19.682,60.219 c 2.624,-5.724 8.222,-10.167 16.181,-12.848 2.064,-0.692 3.752,-0.714 5.461,-0.078 5.879,2.569 24.612,28.133 25.368,34.551 0.108,2.104 -0.657,3.598 -5.478,6.892 -3.42,2.336 -4.299,7.003 -1.962,10.423 2.336,3.42 7.002,4.298 10.423,1.962 4.086,-2.79 12.586,-8.598 11.996,-20.069 C 81.021,69.07 57.713,37.339 46.576,33.244 41.623,31.398 36.413,31.366 31.085,33.154 19.097,37.191 10.439,44.389 6.047,53.969 c -4.26,9.294 -4.125,20.077 0.395,31.189 11.661,28.612 27.976,53.647 48.491,74.412 0.05,0.051 0.101,0.101 0.153,0.15 20.75,20.477 45.756,36.762 74.33,48.409 5.722,2.327 11.357,3.492 16.746,3.492 5.074,0 9.932,-1.032 14.438,-3.098 9.581,-4.391 16.778,-13.048 20.818,-25.044 1.784,-5.318 1.755,-10.526 -0.077,-15.456 -4.109,-11.167 -35.84,-34.475 -47.841,-35.127 z"
+                           id="path6-4" />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                Kontakt
+              </a>
+            </li>
+            <li>
+                {% if user.is_authenticated %}
+                  <a href="{% url 'profile' %}" class="nav-link text-white" style="cursor: pointer;">
+                <svg class="bi d-block mx-auto mb-1" height="24" viewBox="0 0 512 512" width="24">
+                  <path
+                     d="m437.019531 74.980469c-48.351562-48.351563-112.640625-74.980469-181.019531-74.980469-68.382812 0-132.667969 26.628906-181.019531 74.980469-48.351563 48.351562-74.980469 112.636719-74.980469 181.019531 0 68.378906 26.628906 132.667969 74.980469 181.019531 48.351562 48.351563 112.636719 74.980469 181.019531 74.980469 68.378906 0 132.667969-26.628906 181.019531-74.980469 48.351563-48.351562 74.980469-112.640625 74.980469-181.019531 0-68.382812-26.628906-132.667969-74.980469-181.019531zm-308.679687 367.40625c10.707031-61.648438 64.128906-107.121094 127.660156-107.121094 63.535156 0 116.953125 45.472656 127.660156 107.121094-36.347656 24.972656-80.324218 39.613281-127.660156 39.613281s-91.3125-14.640625-127.660156-39.613281zm46.261718-218.519531c0-44.886719 36.515626-81.398438 81.398438-81.398438s81.398438 36.515625 81.398438 81.398438c0 44.882812-36.515626 81.398437-81.398438 81.398437s-81.398438-36.515625-81.398438-81.398437zm235.042969 197.710937c-8.074219-28.699219-24.109375-54.738281-46.585937-75.078125-13.789063-12.480469-29.484375-22.328125-46.359375-29.269531 30.5-19.894531 50.703125-54.3125 50.703125-93.363281 0-61.425782-49.976563-111.398438-111.402344-111.398438s-111.398438 49.972656-111.398438 111.398438c0 39.050781 20.203126 73.46875 50.699219 93.363281-16.871093 6.941406-32.570312 16.785156-46.359375 29.265625-22.472656 20.339844-38.511718 46.378906-46.585937 75.078125-44.472657-41.300781-72.355469-100.238281-72.355469-165.574219 0-124.617188 101.382812-226 226-226s226 101.382812 226 226c0 65.339844-27.882812 124.277344-72.355469 165.578125zm0 0"
+                     id="path2"/>
+                </svg>
+                    {{ user.first_name }} {{ user.last_name }}
+                </a>
+            {% else %}
+                 <a onclick="Log_in_Modal.show();" class="nav-link text-white" style="cursor: pointer;">
+                <svg class="bi d-block mx-auto mb-1" height="24" viewBox="0 0 512 512" width="24">
+                  <path
+                     d="m437.019531 74.980469c-48.351562-48.351563-112.640625-74.980469-181.019531-74.980469-68.382812 0-132.667969 26.628906-181.019531 74.980469-48.351563 48.351562-74.980469 112.636719-74.980469 181.019531 0 68.378906 26.628906 132.667969 74.980469 181.019531 48.351562 48.351563 112.636719 74.980469 181.019531 74.980469 68.378906 0 132.667969-26.628906 181.019531-74.980469 48.351563-48.351562 74.980469-112.640625 74.980469-181.019531 0-68.382812-26.628906-132.667969-74.980469-181.019531zm-308.679687 367.40625c10.707031-61.648438 64.128906-107.121094 127.660156-107.121094 63.535156 0 116.953125 45.472656 127.660156 107.121094-36.347656 24.972656-80.324218 39.613281-127.660156 39.613281s-91.3125-14.640625-127.660156-39.613281zm46.261718-218.519531c0-44.886719 36.515626-81.398438 81.398438-81.398438s81.398438 36.515625 81.398438 81.398438c0 44.882812-36.515626 81.398437-81.398438 81.398437s-81.398438-36.515625-81.398438-81.398437zm235.042969 197.710937c-8.074219-28.699219-24.109375-54.738281-46.585937-75.078125-13.789063-12.480469-29.484375-22.328125-46.359375-29.269531 30.5-19.894531 50.703125-54.3125 50.703125-93.363281 0-61.425782-49.976563-111.398438-111.402344-111.398438s-111.398438 49.972656-111.398438 111.398438c0 39.050781 20.203126 73.46875 50.699219 93.363281-16.871093 6.941406-32.570312 16.785156-46.359375 29.265625-22.472656 20.339844-38.511718 46.378906-46.585937 75.078125-44.472657-41.300781-72.355469-100.238281-72.355469-165.574219 0-124.617188 101.382812-226 226-226s226 101.382812 226 226c0 65.339844-27.882812 124.277344-72.355469 165.578125zm0 0"
+                     id="path2"
+                     style="fill:#ffffff" />
+                </svg>
+                    Přihlaste se
+                  </a>
+                {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<div class="container marketing">
+    <div class="col-sm-8" style="margin: 20px;">
+        <h1>{% if user.is_authenticated %}Vítejte zpět, {{ user.first_name }}{% else %}Vítejte{% endif %}</h1>
+    </div>
+    {% if user.is_authenticated %}
+        <div class="row">
+            {% if status == "s" %}
+                    {% if last_courses %}
+                        <H4 style="margin: 25px;">Moje poslední lekce</H4>
+                    {% else %}
+                        <H4 style="margin: 25px;">Zatím nemáte vyplněné žádné lekce</H4>
+                    {% endif %}
+                       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5" style="margin-top: -15px; margin-left: 0.1%;">
+                            {% for i in last_courses %}
+                                <div class="col">
+                                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg d-flex flex-column h-100 p-5 pb-3 text-shadow-1" style='background-image: url({{ i.course.image.url }});'>
+                                      <a href="{% url 'fill_course' %}?course={{ i.course.id }}" class="no_underline">
+                                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{ i.course.title }}</h2>
+                                          <p style="color: white;">{{ i.course.description_print }}</p>
+                                        <ul class="d-flex list-unstyled mt-auto">
+                                            <li class="me-auto">
+                                            <small style="color: white;">Dokončeno na {{ i.filled_pages_in_percents }}%</small>
+                                          </li>
+                                          <li class="d-flex align-items-center">
+                                            <small style="color: white;">Vytvořil {{ i.course.author.user.first_name }} {{ i.course.author.user.last_name }}</small>
+                                          </li>
+                                        </ul>
+                                          <ul class="d-flex list-unstyled mt-auto">
+                                              <li class="me-auto">
+                                                  <progress max="100" value="{{ i.filled_pages_in_percents }}"></progress>
+                                            </li>
+                                          </ul>
+                                           </a>
+                                          <ul class="d-flex list-unstyled mt-auto">
+                                              <li class="me-auto">
+                                            <small style="color: white;">Poslední změna: {{ i.date_time_filled }}</small>
+                                          </li>
+                                          <li class="d-flex align-items-center">
+                                              <button type="button" onclick="display('r_{{ i.course.id }}');" style="border: 1px white; border-radius: 20px;"  class="btn btn-default">
+                                                <svg color="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path id="down_r_{{ i.course.id }}" d="M30 12 L16 24 2 12" />
+                                                    <path id="up_r_{{ i.course.id }}" style="display: none" d="M30 20 L16 8 2 20" />
+                                                </svg>
+                                              </button>
+                                          </li>
+                                      </ul>
+                                      <ul>
+                                              <div id="show_all_r_{{ i.course.id }}" style="display: none;">
+                                              <p style="color: white;">Seznam bodů v lekci</p>
+                                                  {% for y in i.course.splitted_orders_list %}
+                                                      <li class="me-auto">
+                                                        <small style="color:white;">{{ y.title }}</small>
+                                                      </li>
+                                                  {% endfor %}
+                                              </div>
+                                      </ul>
+                                  </div>
+                                </div>
+                            {% endfor %}
+                            <div class="col">
+                                <a class="btn btn-warning" href="{% url 'courses_list' %}">Zobrazit všechny ></a>
+                            </div>
+                        </div>
+            </div>
+
+
+            {% elif status == "t" %}
+                    {% if my_courses %}
+                        <H4 style="margin: 25px;">Moje lekce</H4>
+                    {% else %}
+                        <H4 style="margin: 25px;">Zatím nemáte vytvořené žádné lekce</H4>
+                    {% endif %}
+                <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5" style="margin-top: -15px; margin-left: 0.1%;">
+                            {% for i in my_courses %}
+                                <div class="col">
+                                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg d-flex flex-column h-100 p-5 pb-3 text-shadow-1" style="background-image: url({{ i.image.url }});">
+                                      <a href="{% url 'edit_course' %}?item={{ i.id }}" class="no_underline">
+                                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{ i.title }}</h2>
+                                          <p style="color: white;">{{ i.description_print }}</p>
+                                      </a>
+                                        <ul class="d-flex list-unstyled mt-auto">
+                                          <li class="d-flex align-items-center">
+                                            <small style="color: white;">Počet stránek: {{ i.pages.all|length }}</small>
+                                          </li>
+                                            <li class="d-flex align-items-center">
+                                          <button type="button" onclick="display('t_{{ i.id }}');" style="border: 1px white; border-radius: 20px;"  class="btn btn-default">
+                                            <svg color="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                <path id="down_t_{{ i.course.id }}" d="M30 12 L16 24 2 12" />
+                                                <path id="up_t_{{ i.course.id }}" style="display: none" d="M30 20 L16 8 2 20" />
+                                            </svg>
+                                          </button>
+                                      </li>
+                                  </ul>
+                                  <ul>
+                                          <div id="show_all_t_{{ i.id }}" style="display: none;">
+                                          <p style="color: white;">Seznam bodů v lekci</p>
+                                              {% for y in i.pages.all %}
+                                                  <li class="me-auto">
+                                                    <small style="color: white;">{{ y.title }}</small>
+                                                  </li>
+                                              {% endfor %}
+                                          </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="col">
+                                <a class="btn btn-warning" href="{% url 'courses_list' %}">Zobrazit všechny ></a>
+                            </div>
+                        </div>
+            {% endif %}
+    <hr class="featurette-divider">
+    {% endif %}
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h3 class="featurette-heading">Chcete se naučit programovat? <span class="text-muted">Zajímá vás programovací jazyk Python?</span></h3>
+        <p class="lead"> Díky  příkladům a otázkám se můžete učit, nebo zdokonalovat v Pythonu a sledovat svůj progress.
+            Přihlaste nebo se zaregistrujte jako student a můžete začít vyplňovat.
+            Chcete-li nám přispět svými otázkami nebo úkoly, přihlaste se jako učitel.</p>
+          <p id="info" style="display: none;">
+                Pokud narazíte na nějakou chybu, můžete ji nahlásit a tak přispět k její opravě.
+              <button onclick="step_by_step_Modal.show();" class="btn btn-warning">Návod krok za krokem</button></p>
+
+          <button id="display_more_button" class="btn btn-primary">Zobrazit víc &#8681;</button>
+      </div>
+      <div class="col-md-5">
+           <video style="width: 100%; height: 100%;" controls>
+          <source src="https://pythoncvicebnice.eu.pythonanywhere.com/media/8_film.mp4?authuser=0?authuser=0" type="video/mp4">
+          Video není podporováno.
+        </video>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+        {% if units %}
+                    <H4 style="margin: 25px;">Nejoblíbenější lekce</H4>
+            {% else %}
+                <H4 style="margin: 25px;">Nejsou zde žádné další lekce</H4>
+            {% endif %}
+                            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5" style="margin-top: -15px; margin-left: 0.1%;">
+                        {% for i in units %}
+                            {% if i.pages.all|length and i.splitted_orders_list %}
+                         
+                                <div class="col">
+                                    <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg d-flex flex-column h-100 p-5 pb-3 text-shadow-1" style="background-image: url({{ i.image.url }});">
+                                        <a href="{% url 'fill_course' %}?course={{ i.id }}" class="no_underline">
+                                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{ i.title }}</h2>
+                                              <p style="color: white;">{{ i.description_print }}</p>
+                                        </a>
+                                        <ul class="d-flex list-unstyled mt-auto">
+                                          <li class="d-flex align-items-center">
+                                            <small style="color: white;">Vytvořil {{ i.author.user.first_name }} {{ i.author.user.last_name }}</small>
+                                          </li>
+                                            <li class="d-flex align-items-center">
+                                      <button type="button" onclick="display('{{ i.id }}');" style="border: 1px white; border-radius: 20px;" class="btn btn-default">
+                                        <svg color="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                            <path id="down_{{ i.id }}" d="M30 12 L16 24 2 12" />
+                                            <path id="up_{{ i.id }}" style="display: none" d="M30 20 L16 8 2 20" />
+                                        </svg>
+                                      </button>
+                                  </li>
+                              </ul>
+                              <ul>
+                                  <div id="show_all_{{ i.id }}" style="display: none;">
+                                      <p style="color:white;">Seznam bodů v lekci</p>
+                                          {% for y in i.splitted_orders_list %}
+                                              <li class="me-auto">
+                                                <small style="color:white;">{{ y.title }}</small>
+                                              </li>
+                                          {% endfor %}
+                                  </div>
+                              </ul>
+                                      </div>
+                                </div>
+                     
+                            {% endif %}
+                        {% endfor %}
+                     <div class="col">
+                                <a class="btn btn-success" href="{% url 'courses_list' %}">Zobrazit všechny ></a>
+                     </div>
+               </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <hr class="featurette-divider">
+    {% include 'footer.html' %}
+</div>
+      {% if not user.is_authenticated %}
+        {% include 'signin_register.html' %}
+      {% endif %}
+
+ <div class="modal fade show" id="info_modal" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="true" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Jak se orientovat na tomto webu?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zavřít"></button>
+      </div>
+      <div class="modal-body">
+        <H1 style="color: black;">Jak se zaregistrovat?</H1>
+          <ul>
+              <li style="color: black;">Klikněte na ikonu uživatele na horním pruhu s odkazy.</li>
+              <img src="/media/icon/prihlasit_se_1.png" width="40%" height="40%">
+              <li style="color: black;">Pokud ještě nemáte vytvořený účet, do formuláře "registrujte se" vyplňte vaše údaje.</li>
+              <li style="color:black;">Pokud jste se již úspěšně zaregistrovali, přihlaste se vyplněním e-mailu a hesla ve formuláři na přihlášení.</li>
+              <img src="/media/icon/prihlasit_se_2.png" width="30%" height="30%">
+          </ul>
+          <H1 style="color: black;">Jak se začít učit nebo procvičovat?</H1>
+          <ul>
+              <li style="color: black;">Pokud jste přihlášeni jako žák, můžete se začít učit, nebo procvičovat.
+                <ul>
+                    <li style="color: black;">V kategorii lekce na horním panelu s odkazy uvidíte vámi vyplněné lekce a dole můžete vybírat ze všech lekcí.</li>
+                    <img src="/media/icon/lekce_0.png" width="20%" height="20%">
+                    <li style="color: black;">Jakmile na nějakou lekci kliknete, budete přesměrování na stránku s přehledem úkolů a otázek v lekci.</li>
+                    <img src="/media/icon/ukoly_v_lekci.png" width="30%" height="30%">
+                    <li style="color: black;">Vyberte úkol a vyplňte jej. U některých úkolů vám bude k dispozici správné řešení, pokud si s úkolem nebudete vědět rady.😊</li>
+                    <img src="/media/icon/lekce_popis.png" width="50%" height="50%">
+                </ul>
+              </li>
+          </ul>
+          <H1 style="color: black;">Jak můžu vytvořit novou lekci?</H1>
+          <ul>
+              <li style="color: black;">Pokud jste přihlášeni jako učitel, můžete vytvořit vlastní lekci.
+                <l>
+                    <li style="color: black;">Kliknutím na + se dostanete na stránku, kde můžete vytvořit novou lekci.</li>
+                    <img src="/media/icon/new_unit_+.jpg" width="20%" height="20%">
+                    <li style="color: black;">Poté zadejte název, popisek, obrázek lekce a uložte.</li>
+                    <li style="color: black;">Pokud vložíte větší obrázek, než je doporučovaná velikost, bude zmenšen po nahrání.</li>
+                    <img src="/media/icon/new_unit_page.jpg" width="50%" height="50%">
+                    <li style="color:black;">Jakmile všechno vyplníte a uložíte, dostanete se na stránku editace lekce.</li>
+                    <img src="/media/icon/new_unit_edit.jpg" width="40%" height="40%">
+                    <li style="color: black;">Pokud budete chtít změnit obrázek lekce, otevře se vám dialog pro nahrání nového souboru.</li>
+                    <img src="/media/icon/update_icon.png" width="20%" height="10%">
+                    <br>
+                    <H3 style="color: black;">Úkoly v lekci</H3>
+                    <li style="color: black;">Pokud vaše lekce nebude obsahovat žádné úkoly, nezobrazí se mezi ostatními lekcemi.</li>
+                    <li style="color: black;">Nový úkol (stránku) vytvoříte kliknutím na tlačítko +</li>
+                    <li style="color: black;">Úkoly můžete mazat kliknutím na červenou ikonu koše. Můžete také měnit pořadí úkolů v lekci.</li>
+                    <br>
+                    <H4 style="color:black;">Změna pořadí úkolů</H4>
+                    <img src="/media/icon/move_pages.gif" width="50%" height="50%">
+                    <li style="color: black;">Odkazem zobrazit řešení lekce žáky uvidíte graf s procentním řešením úkolů v lekci. Procento úspěšnosti je vypočítáno podle vztahu: (počet správně vyplněných úkolů / počet všech úkolů) · 100.</li>
+                    <li style="color: black;">Graf úspěšnosti vypadá například takto:</li>
+                    <img src="/media/icon/success_units.png" width="50%" height="50%">
+                    <br>
+                    <H4 style="color: black;">Vytvoření nového úkolu</H4>
+                    <li style="color: black;">Po kliknutí na tlačítko + (vytvořit novou stránku) se dostanete na vytváření nové stránky. Vytvoříte ji podobně, jako jste vytvořili lekci a uložíte.</li>
+                    <li style="color: black;">Nejdůležitější položka je typ vyhodnocení. Udává jestli aktuální stránka je úkol na naprogramování, otázka na doplnění, nebo otázka na výběr ze tří možností.</li>
+                    <img src="/media/icon/new_page.png" width="40%" height="40%">
+                    <li style="color: black;">Jakmile vytvoříte úkol, můžete jej stále editovat. Hlavně nazapomeňte na správné odpovědi. Bez nich nebude zobrazován, protože by se řešení žáků nemělo s čím porovnat.</li>
+                    <li style="color: black;">Správné odpovědi jsou možnosti, které mohou být výstupem spuštěného programu žáka, odpovědí na otázku, nebo správnou možností výběru.</li>
+                    <li style="color: black;">U správných odpovědí nemusíte rozlišovat velká a malá písmena.</li>
+                    <li style="color: black;">Vybrali jste jako typ stránky úkol a chcete-li využít vstupy (input), tyto vstupy nezahrnujte ve správných odpovědích. Vyhodnocování programu podle jeho výstupu totiž nezobrazuje vstupy.</li>
+                    <img src="/media/icon/using_inputs.png" width="30%">
+                    <br>
+                    <H4 style="color: black;">Zobrazení odpovědí</H4>
+                    <img src="/media/icon/edit_page.png" width="30%" height="30%">
+                    <li style="color: black;">Přejdete-li na stránku s odpověďmi, uvidíte procentní zastoupení jednotlivých odpovědí.</li>
+                    <img src="/media/icon/answers_by_users.png" width="50%" height="50%">
+                </ul>
+              </li>
+          </ul>
+          <H1 style="color: black;">Co můžu dělat, pokud jsem zapomněl/a hesla?</H1>
+          <ul>
+              <li style="color: black;">Nezoufejte, heslo je vždy možné obnovit. V přihlašovacím dialogu vyplňte e-mail a klikněte na tlačítko "Zapomenuté heslo".</li>
+              <li style="color: black;">Na e-mail vám bude zaslán odkaz na obnovu, kde si můžete vytvořit nové heslo. Odkaz v e-mailu platí 30 dní.</li>
+              <li style="color: black;">Odkaz z e-mailu nikomu nesdělujte, obsahuje totiž bezpečnostní klíče pro obnovu.</li>
+              <img src="/media/icon/zapomenute_heslo.png" width="50%" height="50%">
+          </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script>
+      var step_by_step_Modal = new bootstrap.Modal(document.getElementById('info_modal'));
+                          function display(id) {
+                        if (document.getElementById(`show_all_${id}`).style.display == 'none') {
+                            $(`#show_all_${id}`).css('display', 'block');
+                            $(`#down_${id}`).css('display', 'none');
+                            $(`#up_${id}`).css('display', 'block');
+                        } else {
+                            $(`#show_all_${id}`).css('display', 'none');
+                            $(`#down_${id}`).css('display', 'block');
+                            $(`#up_${id}`).css('display', 'none');
+                        }
+                    }
+                                $(document).ready(function (event) {
+                $("#display_more_button").click(function () {
+                    if ($('#info').css('display') == 'none') {
+                        $('#info').css('display', 'block');
+                        $('#display_more_button').text("Zobrazít míň ⇑");
+                    }
+                    else if ($('#info').css('display') == 'block') {
+                        $('#info').css('display', 'none');
+                        $('#display_more_button').text("Zobrazit víc ⇓");
+                    }
+                });
+            });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+seznam = []
+print(seznam)

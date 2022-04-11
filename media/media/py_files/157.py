@@ -1,0 +1,1 @@
+print("Mival bil v Kijove".replace("i","y"))

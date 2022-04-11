@@ -1,0 +1,1 @@
+print("ahoj","světe",sep="-") # Vypsat ahoj, vypsat světe s pomlčkou mezi texty

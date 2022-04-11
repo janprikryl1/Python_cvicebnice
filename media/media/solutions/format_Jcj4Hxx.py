@@ -1,0 +1,1 @@
+print('\"VOŠ\" a \'SPŠE\' Olomouc\\')
